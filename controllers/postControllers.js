@@ -20,7 +20,20 @@ function show(req, res) {
 
 // DELETE - DELETE /posts/1
 function destroy(req, res) {
-    res.send('Eliminazione dei posts ' + req.params.id);
+    const id = parseInt(req.params.id);
+    const post = posts.findIndex((post) => {
+        return post.id === id;
+    });
+    if (post !== -1) {
+        posts.splice(index, 1);
+        res.sendStatus(204);
+    } else {
+        res.status(404);
+        res.json({
+            error: "404",
+            message: "Post non trovato",
+        });
+    }
 }
 
 module.exports = { index, show, destroy };
