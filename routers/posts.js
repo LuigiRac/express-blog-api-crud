@@ -41,22 +41,11 @@ const posts = [
 
 
 //READ - INDEX - /posts/
-router.get('/', (req, res) => {
-    res.json(posts); // restituisce JSON dei posts
-});
+router.get('/', index);
+
 
 // READ - SHOW: /posts/1, /posts/2 ...
-router.get('/:id', (req, res) => {
-    const id = parseInt(req.params.id);
-    const post = posts.find((post) => {
-        return post.id == id;
-    });
-    if (post) {
-        res.send("Post con id: " + id + " Con titolo: " + post.titolo);
-    }
-
-    res.send("Post non trovato");
-});
+router.get('/:id', show);
 
 // CREATE - STORE: /posts/
 router.post('/', (req, res) => {
@@ -79,11 +68,8 @@ router.patch('/:id', (req, res) => {
 });
 
 
-// DELETE - DELETE /posts/1
-router.delete('/:id', (req, res) => {
-    res.send('Eliminazione dei posts ' + req.params.id);
-});
-
+// DELETE - DESTROY /posts/1
+router.delete('/:id', destroy);
 
 //const postsRouter = router;
 //module.exports = { postsRouter, posts } // multiple export
