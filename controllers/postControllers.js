@@ -1,7 +1,6 @@
 //READ - INDEX - /posts/
 function index(req, res) {
     res.json(posts); // restituisce JSON dei posts
-
 }
 
 // READ - SHOW: /posts/1, /posts/2 ...
@@ -22,4 +21,4 @@ function destroy(req, res) {
     res.send('Eliminazione dei posts ' + req.params.id);
 }
 
-module.exports = { index, show, destroy }
+module.exports = { index, show, destroy };

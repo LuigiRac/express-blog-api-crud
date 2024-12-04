@@ -1,43 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-const posts = [
-    {
-        id: 1,
-        titolo: "Ciambellone",
-        contenuto: "Ciambellone",
-        immagine: "/img/ciambellone.jpeg",
-        tags: ["Dolce", "Ricetta"]
-    },
-    {
-        id: 2,
-        titolo: "Cracker Barbabietola",
-        contenuto: "Cracker Barbabietola",
-        immagine: "/img/cracker_barbabietola.jpeg",
-        tags: ["Cracker", "Ricetta", "Barbabietola"]
-    },
-    {
-        id: 3,
-        titolo: "Pane Fritto Dolce",
-        contenuto: "Pane Fritto Dolce",
-        immagine: "/img/pane_fritto_dolce.jpeg",
-        tags: ["Pane", "Ricetta", "Dolce"]
-    },
-    {
-        id: 4,
-        titolo: "Pasta Barbabietola",
-        contenuto: "Pasta Barbabietola",
-        immagine: "/img/pasta_barbabietola.jpeg",
-        tags: ["Pasta", "Ricetta", "Barbabietola"]
-    },
-    {
-        id: 5,
-        titolo: "Torata Paesana",
-        contenuto: "Torta Paesana",
-        immagine: "/img/torta_paesana.jpeg",
-        tags: ["Torta", "Ricetta", "Dolce"]
-    }
-];
+// const controllers = require('../controllers/postControllers');
+const { index, show, destroy } = require('../controllers/postControllers');
+
 
 
 //READ - INDEX - /posts/
@@ -48,24 +14,24 @@ router.get('/', index);
 router.get('/:id', show);
 
 // CREATE - STORE: /posts/
-router.post('/', (req, res) => {
-    res.send('Creazione nuovo post');
-});
+// router.post('/', (req, res) => {
+//     res.send('Creazione nuovo post');
+// });
 
 // UPDATE - PUT: /posts/1, /posts/2 ...
-router.put('/:id', (req, res) => {
-    const id = parseInt(req.params.id);
-    const post = posts.find((post) => {
-        return post.id == id;
-    });
-    res.send('Modifica integrale dei post ' + req.params.id);
+// router.put('/:id', (req, res) => {
+//     const id = parseInt(req.params.id);
+//     const post = posts.find((post) => {
+//         return post.id == id;
+//     });
+//     res.send('Modifica integrale dei post ' + req.params.id);
 
-});
+// });
 
 // UPDATE - PATCH: /posts/1, /posts/2 ...
-router.patch('/:id', (req, res) => {
-    res.send('Modifica parziale dei posts ' + req.params.id);
-});
+// router.patch('/:id', (req, res) => {
+//     res.send('Modifica parziale dei posts ' + req.params.id);
+// });
 
 
 // DELETE - DESTROY /posts/1

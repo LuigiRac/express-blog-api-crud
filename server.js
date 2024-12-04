@@ -15,9 +15,6 @@ Ora passiamo ad implementare le logiche delle nostre CRUD:
 - Destroy dovrà eliminare un singolo post dalla lista, stampare nel terminale (console.log) la lista aggiornata, e rispondere con uno stato 204 e nessun contenuto.
  */
 
-
-
-
 const express = require('express');
 const port = 3000;
 const app = express();
