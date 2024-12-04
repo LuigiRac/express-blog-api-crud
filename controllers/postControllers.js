@@ -1,3 +1,5 @@
+const posts = require('../models/posts.js');
+
 //READ - INDEX - /posts/
 function index(req, res) {
     res.json(posts); // restituisce JSON dei posts
