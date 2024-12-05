@@ -37,3 +37,15 @@ const posts = [
 ];
 
 module.exports = posts
+
+
+/*
+
+{
+    "titolo": "Cheesecake",
+    "contenuto": "cheesecake",
+    "immagine": "/img/cheesecake.jpg",
+    "tags": ["Torta", "Ricetta", "Cheese"]
+}
+
+ */

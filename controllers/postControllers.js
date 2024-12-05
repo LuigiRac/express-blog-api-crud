@@ -20,6 +20,9 @@ function show(req, res) {
 
 // CREATE - STORE: /posts/
 function store(req, res) {
+    console.log(req.body);
+    console.log(req.headers['content-type']);
+
     res.send('Creazione nuovo post');
 }
 
