@@ -61,7 +61,15 @@ function update(req, res) {
     }
     console.log(req.body);
 
-    res.send('Modifica integrale dei post ' + req.params.id);
+    post.titolo = req.body.titolo;
+    post.contenuto = req.body.contenuto;
+    post.immagine = req.body.immagine;
+    post.tags = req.body.tags;
+
+    // console.log(posts);
+
+    // res.send('Modifica integrale dei post ' + req.params.id);
+    res.json(post);
 };
 
 // DELETE - DELETE /posts/1
