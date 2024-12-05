@@ -21,9 +21,29 @@ function show(req, res) {
 // CREATE - STORE: /posts/
 function store(req, res) {
     console.log(req.body);
-    // console.log(req.headers['content-type']);
+    // const newId = posts[posts.length - 1].id + 1;
 
-    res.send('Creazione nuovo post');
+    /* Ciclo For forma più corretta*/
+    let newId = 0;
+    for (let i = 0; i < posts.length; i++) {
+        if (posts[i].id > newId) {
+            newId = posts[i].id;
+        }
+    }
+    newId += 1;
+
+    const newPost = {
+        id: newId,
+        titolo: req.body.titolo,
+        contenuto: req.body.contenuto,
+        immagine: req.body.immagine,
+        tags: req.body.tags
+    }
+    posts.push(newPost)
+    // res.send('Creazione nuovo post');
+    // res.status(201);
+    // res.json(newPosts);
+    res.status(201).json(newPost)
 }
 
 // DELETE - DELETE /posts/1
@@ -33,7 +53,7 @@ function destroy(req, res) {
         return post.id === id;
     });
     if (post !== -1) {
-        posts.splice(index, 1);
+        posts.splice(posts, 1);
         res.sendStatus(204);
     } else {
         res.status(404);
