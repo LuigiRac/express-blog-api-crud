@@ -2,21 +2,18 @@ const express = require('express');
 const router = express.Router();
 
 // const controllers = require('../controllers/postControllers');
-const { index, show, destroy } = require('../controllers/postControllers');
+const { index, show, store, destroy } = require('../controllers/postControllers');
 
 
 
 //READ - INDEX - /posts/
 router.get('/', index);
 
-
 // READ - SHOW: /posts/1, /posts/2 ...
 router.get('/:id', show);
 
 // CREATE - STORE: /posts/
-// router.post('/', (req, res) => {
-//     res.send('Creazione nuovo post');
-// });
+router.post('/', store);
 
 // UPDATE - PUT: /posts/1, /posts/2 ...
 // router.put('/:id', (req, res) => {
@@ -32,7 +29,6 @@ router.get('/:id', show);
 // router.patch('/:id', (req, res) => {
 //     res.send('Modifica parziale dei posts ' + req.params.id);
 // });
-
 
 // DELETE - DESTROY /posts/1
 router.delete('/:id', destroy);

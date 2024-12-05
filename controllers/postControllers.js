@@ -18,6 +18,11 @@ function show(req, res) {
     res.send("Post non trovato");
 }
 
+// CREATE - STORE: /posts/
+function store(req, res) {
+    res.send('Creazione nuovo post');
+}
+
 // DELETE - DELETE /posts/1
 function destroy(req, res) {
     const id = parseInt(req.params.id);
@@ -36,4 +41,5 @@ function destroy(req, res) {
     }
 }
 
-module.exports = { index, show, destroy };
+
+module.exports = { index, show, store, destroy };
