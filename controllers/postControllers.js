@@ -20,7 +20,7 @@ function show(req, res) {
 
 // CREATE - STORE: /posts/
 function store(req, res) {
-    console.log(req.body);
+    // console.log(req.body);
     // const newId = posts[posts.length - 1].id + 1;
 
     /* Ciclo For forma più corretta*/
@@ -46,6 +46,24 @@ function store(req, res) {
     res.status(201).json(newPost)
 }
 
+// UPDATE - PUT: /posts/1, /posts/2 ...
+function update(req, res) {
+    const id = parseInt(req.params.id);
+    const post = posts.find((post) => {
+        return post.id == id;
+    });
+    if (!post) {
+        res.status(404).json({
+            error: "404",
+            message: "Post non trovato",
+        });
+        return;
+    }
+    console.log(req.body);
+
+    res.send('Modifica integrale dei post ' + req.params.id);
+};
+
 // DELETE - DELETE /posts/1
 function destroy(req, res) {
     const id = parseInt(req.params.id);
@@ -65,4 +83,4 @@ function destroy(req, res) {
 }
 
 
-module.exports = { index, show, store, destroy };
+module.exports = { index, show, store, update, destroy };

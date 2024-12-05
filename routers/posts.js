@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 // const controllers = require('../controllers/postControllers');
-const { index, show, store, destroy } = require('../controllers/postControllers');
+const { index, show, store, update, destroy } = require('../controllers/postControllers');
 
 
 
@@ -16,14 +16,7 @@ router.get('/:id', show);
 router.post('/', store);
 
 // UPDATE - PUT: /posts/1, /posts/2 ...
-// router.put('/:id', (req, res) => {
-//     const id = parseInt(req.params.id);
-//     const post = posts.find((post) => {
-//         return post.id == id;
-//     });
-//     res.send('Modifica integrale dei post ' + req.params.id);
-
-// });
+router.put('/:id', update);
 
 // UPDATE - PATCH: /posts/1, /posts/2 ...
 // router.patch('/:id', (req, res) => {
