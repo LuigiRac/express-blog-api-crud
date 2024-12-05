@@ -18,6 +18,7 @@ Ora passiamo ad implementare le logiche delle nostre CRUD:
 const express = require('express');
 const port = 3000;
 const app = express();
+app.use(express.json());
 app.use(express.static("public"));
 
 // Rotte Api
@@ -35,6 +36,7 @@ app.get('/', (req, res) => {
 // /routers/posts - /routers/posts/3
 // /posts - /posts/3
 app.use('/posts', postsRouter);
+
 
 // url: tutte quelle che non corrispondono a niente di definito prima
 app.get('*', (req, res) => {
