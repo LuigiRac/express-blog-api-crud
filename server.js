@@ -20,9 +20,10 @@ const port = 3000;
 const app = express();
 app.use(express.static("public"));
 
+// Rotte Api
 const postsRouter = require('./routers/posts')
 // console.log(postsRouter);
-//return;
+
 
 // url: /
 app.get('/', (req, res) => {
