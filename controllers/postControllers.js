@@ -2,6 +2,7 @@ const posts = require('../models/posts.js');
 
 //READ - INDEX - /posts/
 function index(req, res) {
+    errore500.get(); // Errore esecuzione server
     res.json(posts); // restituisce JSON dei posts
 }
 

@@ -1,10 +1,13 @@
 const express = require('express');
 const router = express.Router();
+const checkTime = require('../middlewares/middlewares');
+
 
 // const controllers = require('../controllers/postControllers');
 const { index, show, store, update, destroy } = require('../controllers/postControllers');
 
-
+// middlewares
+router.use(checkTime);
 
 //READ - INDEX - /posts/
 router.get('/', index);
