@@ -1,8 +1,16 @@
 const express = require('express');
-const port = 3000;
+const port = process.env.PORT || 3000;
 const app = express();
+
+const cors = require("cors");
+app.use(cors({
+    origin: 'http://localhost:5173'
+}));
+
 app.use(express.json());
 app.use(express.static("public"));
+
+
 
 // require middlewares
 const errorsHandler = require('./middlewares/errorsHandler');

@@ -2,7 +2,7 @@ const posts = require('../models/posts.js');
 
 //READ - INDEX - /posts/
 function index(req, res) {
-    errore500.get(); // Errore esecuzione server
+    // errore500.get(); // Errore esecuzione server
     res.json(posts); // restituisce JSON dei posts
 }
 
@@ -13,7 +13,8 @@ function show(req, res) {
         return post.id == id;
     });
     if (post) {
-        res.send("Post con id: " + id + " Con titolo: " + post.titolo);
+        // res.send("Post con id: " + id + " Con titolo: " + post.titolo);
+        res.json(posts)
     }
 
     res.send("Post non trovato");
@@ -25,20 +26,23 @@ function store(req, res) {
     // const newId = posts[posts.length - 1].id + 1;
 
     /* Ciclo For forma più corretta*/
-    let newId = 0;
-    for (let i = 0; i < posts.length; i++) {
-        if (posts[i].id > newId) {
-            newId = posts[i].id;
-        }
-    }
-    newId += 1;
+    // let newId = 0;
+    // for (let i = 0; i < posts.length; i++) {
+    //     if (posts[i].id > newId) {
+    //         newId = posts[i].id;
+    //     }
+    // }
+    // newId += 1;
+
+    const newId = posts.length > 0 ? Math.max(...posts.map((post) => post.id)) + 1 : 1;
 
     const newPost = {
         id: newId,
-        titolo: req.body.titolo,
-        contenuto: req.body.contenuto,
-        immagine: req.body.immagine,
-        tags: req.body.tags
+        title: req.body.title,
+        content: req.body.content,
+        image: req.body.image,
+        tags: req.body.tags,
+        published: req.body.published || false,
     }
     posts.push(newPost)
     // res.send('Creazione nuovo post');
@@ -76,15 +80,14 @@ function update(req, res) {
 // DELETE - DELETE /posts/1
 function destroy(req, res) {
     const id = parseInt(req.params.id);
-    const post = posts.findIndex((post) => {
-        return post.id === id;
-    });
-    if (post !== -1) {
-        posts.splice(posts, 1);
+    const postIndex = posts.findIndex((post) => post.id === id);
+
+    if (postIndex !== -1) {
+
+        posts.splice(postIndex, 1);
         res.sendStatus(204);
     } else {
-        res.status(404);
-        res.json({
+        res.status(404).json({
             error: "404",
             message: "Post non trovato",
         });

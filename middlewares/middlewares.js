@@ -5,7 +5,7 @@ function checkTime(req, res, next) {
     console.log("Sei passato dal middleware alle");
     console.log(currentTime);
 
-    if (currentTime.includes('10:')) {
+    if (currentTime.includes('11:')) {
         res.status(503).send('Servizio non disponibile');
         return;
     }
